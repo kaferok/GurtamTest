@@ -27,13 +27,13 @@ class NewsRepositoryImpl(
     private val sourcesDao: SourcesDao
 ) : NewsRepository {
 
-    override fun getArticlesDB(callback: (List<Articles>) -> Unit) {
-        articlesDao.getArticles()
+    override fun getArticlesDB(sourceId: String, callback: (List<Articles>) -> Unit) {
+        articlesDao.getArticle(sourceId)
             .distinctUntilChanged()
             .map { it.map(ArticleEntity::toDomainModel) }
             .onEach { items ->
                 if (items.isEmpty()) {
-                    getArticles(0)
+                    getArticles(sourceId)
                 } else {
                     callback(items)
                 }
@@ -53,8 +53,8 @@ class NewsRepositoryImpl(
             }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 
-    private suspend fun getArticles(page: Int) {
-        val result = api.getArticles().bodyOrError()
+    private suspend fun getArticles(sourceId: String) {
+        val result = api.getArticles(sourceId).bodyOrError()
         when (result) {
             is Result.Failure -> {}
             is Result.Success -> articlesDao.insert(result.value.articles.map(Articles::toEntity))

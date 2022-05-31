@@ -6,7 +6,7 @@ import com.bijov1apps.domain.models.sources.Sources
 
 interface NewsRepository {
 
-    fun getArticlesDB(callback: (List<Articles>) -> Unit)
+    fun getArticlesDB(sourceId:String, callback: (List<Articles>) -> Unit)
 
     fun getSourcesDB(callback: (List<Sources>) -> Unit)
 }
