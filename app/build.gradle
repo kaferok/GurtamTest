@@ -39,6 +39,8 @@ android {
 dependencies {
 
     // Koin
+    implementation "io.insert-koin:koin-android-viewmodel:$depVer.koinViewModel"
+    implementation "io.insert-koin:koin-android-scope:$depVer.koinScope"
     implementation "io.insert-koin:koin-core:$depVer.koin"
 
     //coroutines
