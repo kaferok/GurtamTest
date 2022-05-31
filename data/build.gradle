@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion rootProject.ext.minSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "SERVER_URL", '"https://newsapi.org"'
+
+        }
+        release {
+            buildConfigField "String", "SERVER_URL", '"https://newsapi.org"'
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$depVer.coreKtx"
+
+
+    // Database
+    kapt "androidx.room:room-compiler:$depVer.room"
+    implementation "androidx.room:room-ktx:$depVer.room"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$depVer.coroutines"
+
+    // Koin
+    implementation "io.insert-koin:koin-core:$depVer.koin"
+
+    // Network
+    implementation "com.squareup.retrofit2:retrofit:$depVer.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$depVer.retrofitLogging"
+    implementation "com.squareup.okhttp3:okhttp:$depVer.okHttp"
+    implementation "com.squareup.retrofit2:converter-gson:$depVer.gson"
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
