@@ -24,7 +24,7 @@ android {
 
 dependencies {
     // Koin
-    implementation "io.insert-koin:koin-core:$depVer.koin"
+    implementation "io.insert-koin:koin-android:$depVer.koin"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$depVer.coroutines"
 

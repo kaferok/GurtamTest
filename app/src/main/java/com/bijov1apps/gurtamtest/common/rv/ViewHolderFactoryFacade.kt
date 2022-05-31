@@ -1,4 +1,4 @@
-package com.bijov1apps.gurtamtest.base.rv
+package com.bijov1apps.gurtamtest.common.rv
 
 import android.view.ViewGroup
 

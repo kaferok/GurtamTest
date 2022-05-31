@@ -1,28 +1,26 @@
-package com.bijov1apps.gurtamtest.base
+package com.bijov1apps.gurtamtest.common
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.bijov1apps.gurtamtest.utils.LiveEvent
 import com.bijov1apps.gurtamtest.utils.asLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
 
 abstract class BaseViewModel<State : ViewState, Action : ViewAction>(
     initState: State
 ) : ViewModel() {
 
-    private val _viewStateLiveData: MutableLiveData<State> = MutableLiveData()
-    val viewStateLiveData: LiveData<State> = _viewStateLiveData.asLiveData()
+    private val viewStateFlow = MutableStateFlow(initState)
+    val viewStateLiveData: LiveData<State> = viewStateFlow.asLiveData()
 
     private val _viewActionLiveData: MutableLiveData<Action> = LiveEvent<Action>()
     val viewActionLiveData: LiveData<Action> = _viewActionLiveData.asLiveData()
 
-    init {
-        initState.let(_viewStateLiveData::setValue)
-    }
-
-    protected fun reduceState(reducer: (oldState: State?) -> State) {
-        val oldState = viewStateLiveData.value
-        _viewStateLiveData.value = reducer(oldState)
+    protected fun reduceState(reducer: (oldState: State) -> State) {
+        val oldState = viewStateLiveData.value!!
+        viewStateFlow.value = reducer(oldState)
     }
 
     fun sendAction(action: Action) {

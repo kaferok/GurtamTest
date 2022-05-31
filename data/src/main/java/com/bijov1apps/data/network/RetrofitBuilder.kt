@@ -3,6 +3,7 @@ package com.bijov1apps.data.network
 import com.bijov1apps.data.BuildConfig
 import com.bijov1apps.data.network.interceptors.ApiKeyInterceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -14,6 +15,7 @@ object RetrofitBuilder {
     internal fun build(): Retrofit {
         val client = OkHttpClient.Builder().apply {
             addInterceptor(ApiKeyInterceptor())
+            addInterceptor(getLoggingInterceptor())
             connectTimeout(TIMEOUT_VALUE, TimeUnit.SECONDS)
             readTimeout(TIMEOUT_VALUE, TimeUnit.SECONDS)
             callTimeout(TIMEOUT_VALUE, TimeUnit.SECONDS)
@@ -21,6 +23,11 @@ object RetrofitBuilder {
         }.callTimeout(TIMEOUT_VALUE, TimeUnit.SECONDS).build()
         return build(client)
     }
+
+    fun getLoggingInterceptor() =
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
     private fun build(client: OkHttpClient) = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())

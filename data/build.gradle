@@ -33,8 +33,6 @@ android {
 
 dependencies {
 
-    implementation "androidx.core:core-ktx:$depVer.coreKtx"
-
     // Database
     kapt "androidx.room:room-compiler:$depVer.room"
     implementation "androidx.room:room-ktx:$depVer.room"
@@ -43,7 +41,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$depVer.coroutines"
 
     // Koin
-    implementation "io.insert-koin:koin-core:$depVer.koin"
+    implementation "io.insert-koin:koin-android:$depVer.koin"
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:$depVer.retrofit"
