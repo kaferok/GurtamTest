@@ -5,9 +5,9 @@ import androidx.room.RoomDatabase
 import com.bijov1apps.data.storage.database.dao.ArticlesDao
 import com.bijov1apps.data.storage.database.dao.SourcesDao
 import com.bijov1apps.data.storage.database.entities.articles.ArticleEntity
-import com.bijov1apps.data.storage.database.entities.source.SourceEntity
+import com.bijov1apps.data.storage.database.entities.source.SourcesEntity
 
-@Database(entities = [SourceEntity::class, ArticleEntity::class], version = 1)
+@Database(entities = [SourcesEntity::class, ArticleEntity::class], version = 1)
 abstract class NewsDatabase : RoomDatabase() {
 
     abstract fun sourcesDao(): SourcesDao
