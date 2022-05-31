@@ -61,4 +61,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$depVer.constraintLayout"
     implementation "androidx.fragment:fragment-ktx:$depVer.fragment"
 
+    implementation project(":data")
+    implementation project(":domain")
+
 }
