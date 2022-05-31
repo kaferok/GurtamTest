@@ -8,7 +8,7 @@ import com.bijov1apps.domain.models.artilces.Articles
 
 @Entity(tableName = "articles_table")
 data class ArticleEntity(
-    @Embedded
+    @Embedded(prefix = "source_")
     val source: SourceEmbedded,
     @ColumnInfo(name = "author")
     val author: String?,

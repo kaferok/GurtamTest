@@ -7,5 +7,19 @@
     <fragment
         android:id="@+id/sourcesFragment"
         android:name="com.bijov1apps.gurtamtest.fragments.sources.SourcesFragment"
-        android:label="SourcesFragment"></fragment>
+        android:label="SourcesFragment">
+        <action
+            android:id="@+id/action_sources_to_articles"
+            app:destination="@id/articlesFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.bijov1apps.gurtamtest.fragments.articles.ArticlesFragment"
+        android:label="ArticlesFragment">
+        <argument
+            android:name="sourceId"
+            app:argType="string" />
+
+    </fragment>
 </navigation>
