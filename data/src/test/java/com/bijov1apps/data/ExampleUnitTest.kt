@@ -1,4 +1,4 @@
-package com.bijov1apps.gurtamtest
+package com.bijov1apps.data
 
 import org.junit.Test
 

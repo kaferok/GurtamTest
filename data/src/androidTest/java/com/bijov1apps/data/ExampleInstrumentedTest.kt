@@ -1,4 +1,4 @@
-package com.bijov1apps.gurtamtest
+package com.bijov1apps.data
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.bijov1apps.gurtamtest", appContext.packageName)
+        assertEquals("com.bijov1apps.data.test", appContext.packageName)
     }
 }
