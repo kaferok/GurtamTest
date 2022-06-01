@@ -4,5 +4,5 @@ import com.bijov1apps.gurtamtest.common.ViewAction
 
 sealed class ArticlesViewAction : ViewAction {
 
-    data class DetailArticles(val id: String) : ArticlesViewAction()
+    data class DetailArticles(val url: String) : ArticlesViewAction()
 }

@@ -12,4 +12,6 @@ class NewsInteractorImpl(
 
     override fun getSourcesDB(callback: (List<Sources>) -> Unit) =
         repository.getSourcesDB(callback)
+
+    override suspend fun getDetailArticle(url: String): Articles = repository.getDetailArticle(url)
 }

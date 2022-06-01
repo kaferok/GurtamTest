@@ -10,7 +10,7 @@ import com.bijov1apps.gurtamtest.common.viewBinding
 import com.bijov1apps.gurtamtest.databinding.ListFragmentBinding
 import com.bijov1apps.gurtamtest.fragments.sources.rv.SourcesAdapter
 import com.bijov1apps.gurtamtest.fragments.sources.rv.SourcesViewHolder
-import com.bijov1apps.gurtamtest.utils.navigate
+import com.bijov1apps.gurtamtest.common.utils.navigate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SourcesFragment : Fragment(R.layout.list_fragment) {

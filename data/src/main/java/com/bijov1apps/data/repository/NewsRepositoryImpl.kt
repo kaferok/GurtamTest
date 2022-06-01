@@ -27,8 +27,10 @@ class NewsRepositoryImpl(
     private val sourcesDao: SourcesDao
 ) : NewsRepository {
 
+    private val flowDBScope = CoroutineScope(Dispatchers.IO)
+
     override fun getArticlesDB(sourceId: String, callback: (List<Articles>) -> Unit) {
-        articlesDao.getArticle(sourceId)
+        articlesDao.getArticles(sourceId)
             .distinctUntilChanged()
             .map { it.map(ArticleEntity::toDomainModel) }
             .onEach { items ->
@@ -37,7 +39,7 @@ class NewsRepositoryImpl(
                 } else {
                     callback(items)
                 }
-            }.launchIn(CoroutineScope(Dispatchers.IO))
+            }.launchIn(flowDBScope)
     }
 
     override fun getSourcesDB(callback: (List<Sources>) -> Unit) {
@@ -50,7 +52,11 @@ class NewsRepositoryImpl(
                 } else {
                     callback(items)
                 }
-            }.launchIn(CoroutineScope(Dispatchers.IO))
+            }.launchIn(flowDBScope)
+    }
+
+    override suspend fun getDetailArticle(url: String): Articles {
+        return articlesDao.getArticle(url)?.toDomainModel() ?: Articles()
     }
 
     private suspend fun getArticles(sourceId: String) {

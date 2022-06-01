@@ -11,6 +11,7 @@ import com.bijov1apps.gurtamtest.common.viewBinding
 import com.bijov1apps.gurtamtest.databinding.ListFragmentBinding
 import com.bijov1apps.gurtamtest.fragments.articles.rv.ArticlesAdapter
 import com.bijov1apps.gurtamtest.fragments.articles.rv.ArticlesViewHolder
+import com.bijov1apps.gurtamtest.common.utils.navigate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -45,8 +46,12 @@ class ArticlesFragment : Fragment(R.layout.list_fragment) {
                 updateHeader(state.header)
             }
             viewActionLiveData.observe(viewLifecycleOwner) { action ->
-                when(action){
-//                    is ArticlesViewAction.DetailArticles ->
+                when (action) {
+                    is ArticlesViewAction.DetailArticles -> navigate(
+                        ArticlesFragmentDirections.actionArticlesToDetailArticle(
+                            action.url
+                        )
+                    )
                 }
             }
         }

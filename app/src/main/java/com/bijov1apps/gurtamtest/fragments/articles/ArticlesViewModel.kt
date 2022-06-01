@@ -20,7 +20,7 @@ class ArticlesViewModel(
     }
 
     private fun getArticle(sourceId: String) {
-        interactor.getArticlesDB(sourceId) { items ->
+        val articles = interactor.getArticlesDB(sourceId) { items ->
             reduceState { oldState ->
                 oldState.copy(
                     articles = items.map(Articles::toRvItem),

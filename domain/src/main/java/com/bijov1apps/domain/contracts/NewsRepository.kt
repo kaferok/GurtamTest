@@ -9,4 +9,7 @@ interface NewsRepository {
     fun getArticlesDB(sourceId:String, callback: (List<Articles>) -> Unit)
 
     fun getSourcesDB(callback: (List<Sources>) -> Unit)
+
+    suspend fun getDetailArticle(url: String): Articles
+
 }

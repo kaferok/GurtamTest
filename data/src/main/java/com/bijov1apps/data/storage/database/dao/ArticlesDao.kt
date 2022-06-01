@@ -14,5 +14,8 @@ interface ArticlesDao {
     suspend fun insert(entities: List<ArticleEntity>)
 
     @Query("SELECT*FROM ARTICLES_TABLE WHERE source_id == :sourceId")
-    fun getArticle(sourceId: String): Flow<List<ArticleEntity>>
+    fun getArticles(sourceId: String): Flow<List<ArticleEntity>>
+
+    @Query("SELECT*FROM ARTICLES_TABLE WHERE url == :url LIMIT 1")
+    suspend fun getArticle(url: String): ArticleEntity?
 }
