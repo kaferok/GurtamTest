@@ -8,5 +8,5 @@
     <item
         android:id="@+id/everythingFragment"
         android:icon="@drawable/ic_baseline_all_inclusive_24"
-        android:title="@string/source" />
+        android:title="@string/news" />
 </menu>

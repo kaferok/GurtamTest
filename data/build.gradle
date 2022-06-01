@@ -37,6 +37,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$depVer.room"
     implementation "androidx.room:room-ktx:$depVer.room"
 
+    implementation "androidx.paging:paging-runtime-ktx:$depVer.paging"
+
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$depVer.coroutines"
 

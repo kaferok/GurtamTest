@@ -46,6 +46,9 @@ dependencies {
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$depVer.coroutines"
 
+    //paging
+    implementation "androidx.paging:paging-runtime-ktx:$depVer.paging"
+
     implementation 'androidx.databinding:viewbinding:7.2.1'
 
     //glide

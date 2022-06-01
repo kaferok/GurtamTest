@@ -7,6 +7,6 @@ import org.koin.dsl.module
 object DomainModule {
 
     val module = module {
-        single<NewsInteractor> { NewsInteractorImpl(get()) }
+        single<NewsInteractor> { NewsInteractorImpl(get(), get()) }
     }
 }

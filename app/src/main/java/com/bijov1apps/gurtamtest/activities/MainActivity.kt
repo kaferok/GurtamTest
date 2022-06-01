@@ -3,7 +3,7 @@ package com.bijov1apps.gurtamtest.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.bijov1apps.gurtamtest.R
 import com.bijov1apps.gurtamtest.common.ActivityBinder
@@ -16,7 +16,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ActivityBinder {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        binding.bottomNavigation.setupWithNavController(findNavController(R.id.mainContainer))
+        val navHost = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
+        val navController = navHost.navController
+        binding.bottomNavigation.setupWithNavController(navController)
     }
 
     override fun toolbar(isVisible: Boolean, isShowIcon: Boolean, title: String?) {
@@ -33,4 +35,5 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ActivityBinder {
         }
         supportActionBar?.setIcon(arrowBack)
     }
+
 }
