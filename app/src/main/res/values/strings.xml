@@ -3,4 +3,7 @@
 
     <string name="article_from">Article from %s</string>
     <string name="original_source">Original Source: %s</string>
+
+    <string name="source">Source</string>
+    <string name="everything">Everything</string>
 </resources>

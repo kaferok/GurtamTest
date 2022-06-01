@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sourcesFragment"
+        android:icon="@drawable/ic_baseline_source_24"
+        android:title="@string/source" />
+    <item
+        android:id="@+id/everythingFragment"
+        android:icon="@drawable/ic_baseline_all_inclusive_24"
+        android:title="@string/source" />
+</menu>
