@@ -1,4 +1,4 @@
-package com.bijov1apps.gurtamtest.utils
+package com.bijov1apps.gurtamtest.common.utils
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

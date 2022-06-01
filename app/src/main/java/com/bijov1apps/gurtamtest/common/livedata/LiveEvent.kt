@@ -1,4 +1,4 @@
-package com.bijov1apps.gurtamtest.utils
+package com.bijov1apps.gurtamtest.common.livedata
 
 import android.util.ArraySet
 import androidx.annotation.MainThread
@@ -14,24 +14,25 @@ class LiveEvent<T> : MediatorLiveData<T>() {
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
         val wrapper = ObserverWrapper(observer)
         observers.add(wrapper)
-        super.observe(owner, observer)
+        super.observe(owner, wrapper)
     }
 
+    @MainThread
     override fun removeObserver(observer: Observer<in T>) {
         if (observers.remove<Observer<in T>>(observer)) {
             super.removeObserver(observer)
             return
         }
+
         val iterator = observers.iterator()
         while (iterator.hasNext()) {
             val wrapper = iterator.next()
             if (wrapper.observer == observer) {
                 iterator.remove()
-                super.removeObserver(observer)
+                super.removeObserver(wrapper)
                 break
             }
         }
-
     }
 
     override fun setValue(value: T) {
@@ -39,7 +40,7 @@ class LiveEvent<T> : MediatorLiveData<T>() {
         super.setValue(value)
     }
 
-    private class ObserverWrapper<T>(val observer: Observer<in T>) : Observer<T> {
+    private class ObserverWrapper<T>(val observer: Observer<T>) : Observer<T> {
         private var pending = false
 
         override fun onChanged(t: T) {

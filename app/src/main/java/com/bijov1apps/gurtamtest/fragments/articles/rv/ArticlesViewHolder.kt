@@ -7,7 +7,7 @@ import com.bijov1apps.gurtamtest.R
 import com.bijov1apps.gurtamtest.common.rv.BaseViewHolder
 import com.bijov1apps.gurtamtest.common.rv.ViewHolderFactoryContract
 import com.bijov1apps.gurtamtest.databinding.ArticlesItemBinding
-import com.bijov1apps.gurtamtest.utils.inflate
+import com.bijov1apps.gurtamtest.common.utils.inflate
 import com.bumptech.glide.Glide
 
 class ArticlesViewHolder(

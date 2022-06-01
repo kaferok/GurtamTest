@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.bijov1apps.gurtamtest.utils.LiveEvent
-import com.bijov1apps.gurtamtest.utils.asLiveData
+import com.bijov1apps.gurtamtest.common.livedata.LiveEvent
+import com.bijov1apps.gurtamtest.common.livedata.asLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
 
 abstract class BaseViewModel<State : ViewState, Action : ViewAction>(
