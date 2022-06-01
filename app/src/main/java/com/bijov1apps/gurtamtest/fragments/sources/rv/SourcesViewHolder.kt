@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import com.bijov1apps.gurtamtest.R
 import com.bijov1apps.gurtamtest.common.rv.BaseViewHolder
 import com.bijov1apps.gurtamtest.common.rv.ViewHolderFactoryContract
-import com.bijov1apps.gurtamtest.databinding.SourceItemBinding
 import com.bijov1apps.gurtamtest.common.utils.inflate
+import com.bijov1apps.gurtamtest.databinding.SourceItemBinding
 
 class SourcesViewHolder(
     view: View,
@@ -15,13 +15,13 @@ class SourcesViewHolder(
 
     private val binding = SourceItemBinding.bind(view)
 
-    override fun bind(item: SourcesItem) {
+    override fun bind(item: SourcesItem?) {
         with(binding) {
-            tvTitle.text = item.name
-            tvDescription.text = item.description
+            tvTitle.text = item?.name
+            tvDescription.text = item?.description
 
             root.setOnClickListener {
-                onItemClicked.invoke(item.id)
+                onItemClicked.invoke(item?.id.orEmpty())
             }
         }
     }

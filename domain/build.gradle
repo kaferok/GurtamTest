@@ -26,6 +26,8 @@ dependencies {
     // Koin
     implementation "io.insert-koin:koin-android:$depVer.koin"
 
+    implementation "androidx.paging:paging-runtime-ktx:$depVer.paging"
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$depVer.coroutines"
 
     implementation "com.squareup.retrofit2:converter-gson:$depVer.gson"

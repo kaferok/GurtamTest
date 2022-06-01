@@ -5,5 +5,5 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseViewHolder<T : BindableItem>(view: View) : RecyclerView.ViewHolder(view) {
 
-    open fun bind(item: T) = Unit
+    open fun bind(item: T?) = Unit
 }

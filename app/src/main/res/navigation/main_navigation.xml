@@ -33,4 +33,9 @@
             android:name="url"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/everythingFragment"
+        android:name="com.bijov1apps.gurtamtest.fragments.everything.EverythingFragment"
+        android:label="EverythingFragment" />
 </navigation>
