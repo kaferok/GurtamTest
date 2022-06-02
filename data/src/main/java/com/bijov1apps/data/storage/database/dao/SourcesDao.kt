@@ -15,4 +15,7 @@ interface SourcesDao {
 
     @Query("SELECT*FROM SOURCE_TABLE")
     fun getSources(): Flow<List<SourcesEntity>>
+
+    @Query("SELECT name FROM SOURCE_TABLE WHERE id ==:id LIMIT 1")
+    suspend fun getNameById(id: String): String
 }

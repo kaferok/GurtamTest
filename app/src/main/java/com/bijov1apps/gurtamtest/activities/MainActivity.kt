@@ -3,22 +3,14 @@ package com.bijov1apps.gurtamtest.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.bijov1apps.gurtamtest.R
 import com.bijov1apps.gurtamtest.common.ActivityBinder
-import com.bijov1apps.gurtamtest.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(R.layout.activity_main), ActivityBinder {
 
-    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val navHost = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
-        val navController = navHost.navController
-        binding.bottomNavigation.setupWithNavController(navController)
     }
 
     override fun toolbar(isVisible: Boolean, isShowIcon: Boolean, title: String?) {

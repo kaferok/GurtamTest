@@ -10,17 +10,12 @@ private const val DEFAULT_PAGE_SIZE = 30
 
 interface NewsApi {
 
-    @GET("/v2/top-headlines")
-    suspend fun getArticles(
-        @Query("sources") sourceId: String
-    ): Response<ArticlesResponse>
-
     @GET("/v2/top-headlines/sources")
     suspend fun getSources(): Response<SourcesResponse>
 
     @GET("/v2/everything")
     suspend fun getEverything(
-        @Query("q") query: String?,
+        @Query("sources") sources: String?,
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int = DEFAULT_PAGE_SIZE
     ): Response<ArticlesResponse>

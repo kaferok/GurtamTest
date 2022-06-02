@@ -6,10 +6,12 @@ import com.bijov1apps.domain.models.sources.Sources
 
 interface NewsRepository {
 
-    fun getArticlesDB(sourceId:String, callback: (List<Articles>) -> Unit)
-
     fun getSourcesDB(callback: (List<Sources>) -> Unit)
 
+//    fun getArticlesPagingSource(): PagingSource<Int, Articles>
+
     suspend fun getDetailArticle(url: String): Articles
+
+    suspend fun getSourceNameById(sourceId: String): String
 
 }
