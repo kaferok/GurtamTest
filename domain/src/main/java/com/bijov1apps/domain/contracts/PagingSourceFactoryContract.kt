@@ -4,5 +4,5 @@ import androidx.paging.PagingSource
 
 interface PagingSourceFactoryContract<T : Any, P : PagingSource<Int, T>> {
 
-    fun create(query: String): P
+    fun create(source: String): P
 }

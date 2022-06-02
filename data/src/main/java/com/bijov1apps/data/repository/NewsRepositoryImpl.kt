@@ -1,5 +1,6 @@
 package com.bijov1apps.data.repository
 
+import androidx.paging.PagingSource
 import com.bijov1apps.data.network.api.NewsApi
 import com.bijov1apps.data.network.bodyOrError
 import com.bijov1apps.data.storage.database.dao.ArticlesDao
@@ -29,19 +30,6 @@ class NewsRepositoryImpl(
 
     private val flowDBScope = CoroutineScope(Dispatchers.IO)
 
-    override fun getArticlesDB(sourceId: String, callback: (List<Articles>) -> Unit) {
-        articlesDao.getArticles(sourceId)
-            .distinctUntilChanged()
-            .map { it.map(ArticleEntity::toDomainModel) }
-            .onEach { items ->
-                if (items.isEmpty()) {
-                    getArticles(sourceId)
-                } else {
-                    callback(items)
-                }
-            }.launchIn(flowDBScope)
-    }
-
     override fun getSourcesDB(callback: (List<Sources>) -> Unit) {
         sourcesDao.getSources()
             .distinctUntilChanged()
@@ -55,16 +43,16 @@ class NewsRepositoryImpl(
             }.launchIn(flowDBScope)
     }
 
+//    override fun getArticlesPagingSource(): PagingSource<Int, Articles> {
+//        return articlesDao.getArticles()
+//    }
+
     override suspend fun getDetailArticle(url: String): Articles {
         return articlesDao.getArticle(url)?.toDomainModel() ?: Articles()
     }
 
-    private suspend fun getArticles(sourceId: String) {
-        val result = api.getArticles(sourceId).bodyOrError()
-        when (result) {
-            is Result.Failure -> {}
-            is Result.Success -> articlesDao.insert(result.value.articles.map(Articles::toEntity))
-        }
+    override suspend fun getSourceNameById(sourceId: String): String {
+        return sourcesDao.getNameById(sourceId)
     }
 
     private suspend fun getSources() {

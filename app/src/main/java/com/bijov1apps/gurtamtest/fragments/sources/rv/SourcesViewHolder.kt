@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.bijov1apps.gurtamtest.R
 import com.bijov1apps.gurtamtest.common.rv.BaseViewHolder
 import com.bijov1apps.gurtamtest.common.rv.ViewHolderFactoryContract
-import com.bijov1apps.gurtamtest.common.utils.inflate
+import com.bijov1apps.gurtamtest.common.extensions.inflate
 import com.bijov1apps.gurtamtest.databinding.SourceItemBinding
 
 class SourcesViewHolder(

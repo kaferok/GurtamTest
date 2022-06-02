@@ -6,6 +6,7 @@ import org.koin.dsl.module
 
 object DomainModule {
 
+    //    @ExperimentalPagingApi
     val module = module {
         single<NewsInteractor> { NewsInteractorImpl(get(), get()) }
     }

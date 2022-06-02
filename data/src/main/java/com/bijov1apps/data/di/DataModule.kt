@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.bijov1apps.data.network.RetrofitBuilder
 import com.bijov1apps.data.network.api.NewsApi
-import com.bijov1apps.data.repository.NewsPageSource
 import com.bijov1apps.data.repository.NewsRepositoryImpl
+import com.bijov1apps.data.repository.paging.NewsPageSource
 import com.bijov1apps.data.storage.database.NewsDatabase
 import com.bijov1apps.data.storage.database.dao.ArticlesDao
 import com.bijov1apps.data.storage.database.dao.SourcesDao
@@ -21,7 +21,14 @@ object DataModule {
 
         single<NewsRepository> { NewsRepositoryImpl(get(), get(), get()) }
 
-        single<PagingSourceFactoryContract<Articles, NewsPageSource>> { NewsPageSource.Factory(get()) }
+//        single<RemoteMediatorFactoryContract<Articles, NewsRemoteMediator>> { NewsRemoteMediator.Factory(get(),get(),get()) }
+
+        single<PagingSourceFactoryContract<Articles, NewsPageSource>> {
+            NewsPageSource.Factory(
+                get(),
+                get()
+            )
+        }
 
         //Database
         fun provideDatabase(application: Application): NewsDatabase {
